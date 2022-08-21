@@ -16,7 +16,7 @@ import { Menu } from '@mui/icons-material';
 import { useState } from 'react';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+const navItems = ['About me', 'Projects'];
 
 export default function Navigation(props: any) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -32,9 +32,11 @@ export default function Navigation(props: any) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
+        {navItems.map((item, index) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
+            <ListItemButton
+              sx={{ textAlign: 'center' }}
+              onClick={() => props.refs[index].current?.scrollIntoView({ behavior: 'smooth' })}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
@@ -62,8 +64,11 @@ export default function Navigation(props: any) {
             Anja Stricker
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
+            {navItems.map((item, index) => (
+              <Button
+                key={item}
+                sx={{ color: '#fff' }}
+                onClick={() => props.refs[index].current?.scrollIntoView({ behavior: 'smooth' })}>
                 {item}
               </Button>
             ))}

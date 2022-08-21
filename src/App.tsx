@@ -1,32 +1,55 @@
-import { Box, Typography, Paper } from '@mui/material';
+import { Box, Typography, Paper, useMediaQuery, useTheme } from '@mui/material';
 import Fade from 'react-reveal/Fade';
-import React from 'react';
+import React, { useRef } from 'react';
 import './App.css';
 import Navigation from './components/Navigation';
 import anja from './assets/anja.jpg';
+import anjaCrop from './assets/anja-crop.png';
 import Lottie from 'lottie-react';
 import scroll from './animations/scroll-arrow.json';
 
 function App() {
+  const theme = useTheme();
+  const large = useMediaQuery(theme.breakpoints.up('lg'));
+  const medium = useMediaQuery(theme.breakpoints.up('md'));
+  const small = useMediaQuery(theme.breakpoints.up('sm'));
+  const mobile = useMediaQuery('(max-width:760px)');
+
+  const aboutMeRef = useRef(null);
+  const projectsRef = useRef(null);
   return (
     <>
-      <Navigation>
+      <Navigation refs={[aboutMeRef, projectsRef]}>
         <Box style={{ width: '100%' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', minHeight: '100vh' }}>
+          <div
+            ref={aboutMeRef}
+            style={{ display: 'flex', justifyContent: 'center', minHeight: '100vh' }}>
             <Fade left>
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  gridTemplateColumns:
+                    large || medium
+                      ? 'repeat(5, 1fr)'
+                      : small && !mobile
+                      ? 'repeat(2, 1fr)'
+                      : 'repeat(1, 1fr)',
                   gridAutoFlow: 'row',
-                  gridGap: 20,
+                  rowGap: 20,
+                  columnGap: mobile ? 0 : 20,
                   margin: 'auto',
-                  maxWidth: 1200
+                  maxWidth: large ? 1000 : medium ? 860 : small && !mobile ? 700 : 350
                 }}>
                 <Typography
-                  variant="h2"
-                  style={{ fontWeight: 'bold', color: 'white', gridRow: 1, gridColumn: '1/3' }}>
-                  Hello World! This is me!
+                  variant={large ? 'h2' : medium ? 'h2' : small ? 'h3' : 'h3'}
+                  style={{
+                    marginTop: mobile ? 80 : 0,
+                    fontWeight: 'bold',
+                    color: 'white',
+                    gridRow: 1,
+                    gridColumn: large || medium ? '1/3' : '1/3'
+                  }}>
+                  This is me!
                 </Typography>
                 <Paper
                   elevation={0}
@@ -35,11 +58,13 @@ function App() {
                     background: '#fff',
                     height: '100%',
                     borderRadius: 5,
-                    gridRow: 2,
-                    gridColumn: '1/3'
+                    gridRow: mobile ? 3 : 2,
+                    gridColumn: large || medium ? '1/4' : 1
                   }}>
                   <div style={{ margin: 20 }}>
-                    <Typography variant="h1" style={{ fontWeight: 'bold' }}>
+                    <Typography
+                      variant={large ? 'h2' : medium ? 'h2' : small ? 'h3' : 'h3'}
+                      style={{ fontWeight: 'bold' }}>
                       Anja Stricker
                     </Typography>
                     <Typography variant="h4">Full Stack Developer</Typography>
@@ -58,44 +83,65 @@ function App() {
                     background: '#fff',
                     height: '100%',
                     borderRadius: 5,
-                    gridRow: 3,
-                    gridColumn: '1/3'
+                    gridRow: mobile ? 4 : 3,
+                    gridColumn: large || medium ? '1/4' : mobile ? 1 : '1/3'
                   }}>
                   <div style={{ margin: 20 }}>
-                    <Typography variant="h2" style={{ fontWeight: 'bold' }}>
+                    <Typography
+                      variant={large ? 'h2' : medium ? 'h2' : small ? 'h3' : 'h3'}
+                      style={{ fontWeight: 'bold' }}>
                       Skills
                     </Typography>
                     <Typography>
                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
                       eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
                       voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                      kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                      kasd gubergren.
                     </Typography>
                   </div>
                 </Paper>
                 <img
-                  src={anja}
+                  src={mobile ? anjaCrop : anja}
                   width="100%"
-                  style={{ gridRow: '2/4', gridColumn: '3/4', zIndex: 2, borderRadius: 5 }}
+                  style={{
+                    gridRow: large || medium ? '2/4' : 2,
+                    gridColumn: large || medium ? '4/6' : mobile ? 1 : 2,
+                    zIndex: 2,
+                    borderRadius: 5
+                  }}
                 />
               </div>
             </Fade>
           </div>
-          <Lottie animationData={scroll} style={{ height: 120, marginTop: -120, color: 'white' }} />
+          <Lottie
+            animationData={scroll}
+            style={{
+              height: small && !mobile ? 80 : mobile ? 0 : 120,
+              marginTop: small && !mobile ? -80 : mobile ? 0 : -120,
+              color: 'white'
+            }}
+          />
 
-          <div style={{ display: 'flex', justifyContent: 'center', minHeight: '100vh' }}>
+          <div
+            ref={projectsRef}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              minHeight: '100vh',
+              marginTop: mobile ? 50 : 0
+            }}>
             <Fade left>
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gridTemplateColumns: mobile ? 'repeat(1, 1fr)' : 'repeat(2, 1fr)',
                   gridAutoFlow: 'row',
                   gridGap: 20,
                   margin: 'auto',
-                  maxWidth: 1200
+                  maxWidth: large ? 1000 : medium ? 860 : small && !mobile ? 700 : 350
                 }}>
                 <Typography
-                  variant="h2"
+                  variant={large ? 'h2' : medium ? 'h2' : small ? 'h3' : 'h3'}
                   style={{ fontWeight: 'bold', color: 'white', gridRow: 1, gridColumn: '1/2' }}>
                   Projects
                 </Typography>
@@ -128,8 +174,8 @@ function App() {
                     background: '#fff',
                     height: '100%',
                     borderRadius: 5,
-                    gridRow: 2,
-                    gridColumn: 2
+                    gridRow: mobile ? 3 : 2,
+                    gridColumn: mobile ? 1 : 2
                   }}>
                   <div style={{ margin: 20 }}>
                     <Typography variant="h2" style={{ fontWeight: 'bold' }}>
@@ -150,7 +196,7 @@ function App() {
                     background: '#fff',
                     height: '100%',
                     borderRadius: 5,
-                    gridRow: 3,
+                    gridRow: mobile ? 4 : 3,
                     gridColumn: 1
                   }}>
                   <div style={{ margin: 20 }}>
@@ -172,8 +218,8 @@ function App() {
                     background: '#fff',
                     height: '100%',
                     borderRadius: 5,
-                    gridRow: 3,
-                    gridColumn: 2
+                    gridRow: mobile ? 5 : 3,
+                    gridColumn: mobile ? 1 : 2
                   }}>
                   <div style={{ margin: 20 }}>
                     <Typography variant="h2" style={{ fontWeight: 'bold' }}>
