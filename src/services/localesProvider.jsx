@@ -6,13 +6,13 @@ export default function LocalesProvider({ children }) {
     palette: {
       type: 'dark',
       primary: {
-        main: '#256D85'
+        main: '#D1512D'
       },
       secondary: {
-        main: '#B25068'
+        main: '#411530'
       },
       background: {
-        default: '#002B5B'
+        default: '#411530'
       }
     }
   });

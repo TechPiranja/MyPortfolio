@@ -16,7 +16,7 @@ import { Menu } from '@mui/icons-material';
 import { useState } from 'react';
 
 const drawerWidth = 240;
-const navItems = ['About me', 'Projects'];
+const navItems = ['About me', 'Projects', 'Contact'];
 
 export default function Navigation(props: any) {
   const [mobileOpen, setMobileOpen] = useState(false);

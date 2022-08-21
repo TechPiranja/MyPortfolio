@@ -5,8 +5,11 @@ import './App.css';
 import Navigation from './components/Navigation';
 import anja from './assets/anja.jpg';
 import anjaCrop from './assets/anja-crop.png';
+import anjaSide from './assets/anja-side.jpg';
+import anjaSideCrop from './assets/anja-side-crop.jpg';
 import Lottie from 'lottie-react';
 import scroll from './animations/scroll-arrow.json';
+import mail from './animations/mail.json';
 
 function App() {
   const theme = useTheme();
@@ -17,9 +20,10 @@ function App() {
 
   const aboutMeRef = useRef(null);
   const projectsRef = useRef(null);
+  const contactRef = useRef(null);
   return (
     <>
-      <Navigation refs={[aboutMeRef, projectsRef]}>
+      <Navigation refs={[aboutMeRef, projectsRef, contactRef]}>
         <Box style={{ width: '100%' }}>
           <div
             ref={aboutMeRef}
@@ -233,6 +237,84 @@ function App() {
                     </Typography>
                   </div>
                 </Paper>
+              </div>
+            </Fade>
+          </div>
+          <div
+            ref={contactRef}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              minHeight: '100vh',
+              marginTop: mobile ? 50 : 0
+            }}>
+            <Fade left>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: mobile ? 'repeat(1, 1fr)' : 'repeat(2, 1fr)',
+                  gridAutoFlow: 'row',
+                  gridGap: 20,
+                  margin: 'auto',
+                  maxWidth: large ? 1000 : medium ? 860 : small && !mobile ? 700 : 350
+                }}>
+                <Typography
+                  variant={large ? 'h2' : medium ? 'h2' : small ? 'h3' : 'h3'}
+                  style={{ fontWeight: 'bold', color: 'white', gridRow: 1, gridColumn: '1/2' }}>
+                  Contact
+                </Typography>
+                <Paper
+                  elevation={0}
+                  style={{
+                    margin: 'auto',
+                    background: '#fff',
+                    height: '100%',
+                    borderRadius: 5,
+                    gridRow: 2,
+                    gridColumn: 1
+                  }}>
+                  <div
+                    style={{
+                      margin: 20,
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column'
+                    }}>
+                    <Typography variant="h4" style={{ fontWeight: 'bold' }}>
+                      Get in touch!
+                    </Typography>
+                    <Typography style={{ marginTop: 20, marginBottom: 20 }}>
+                      Feel free to contact me for any new oppurtunities or interesting projects! I
+                      will try my best to get back to you asap!
+                    </Typography>
+
+                    <div
+                      style={{ width: '100%' }}
+                      className="btn btn-three"
+                      onClick={() =>
+                        (location.href = 'mailto:anja.stricker@icloud.com?subject=Hi Anja')
+                      }>
+                      <span>Contact me</span>
+                    </div>
+                    <Lottie
+                      animationData={mail}
+                      style={{
+                        height: '100%',
+                        marginBottom: 20
+                      }}
+                    />
+                  </div>
+                </Paper>
+                <img
+                  src={mobile ? anjaSideCrop : anjaSide}
+                  width="100%"
+                  style={{
+                    gridRow: mobile ? 3 : 2,
+                    gridColumn: mobile ? 1 : 2,
+                    zIndex: 2,
+                    borderRadius: 5
+                  }}
+                />
               </div>
             </Fade>
           </div>
