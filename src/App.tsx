@@ -10,6 +10,11 @@ import anjaSideCrop from './assets/anja-side-crop.jpg';
 import Lottie from 'lottie-react';
 import scroll from './animations/scroll-arrow.json';
 import mail from './animations/mail.json';
+import react from './assets/react.png';
+import csharp from './assets/Csharp-logo.png';
+import docker from './assets/docker.png';
+import aspnet from './assets/aspnet.png';
+import nodejs from './assets/nodejs.png';
 
 function App() {
   const theme = useTheme();
@@ -65,18 +70,21 @@ function App() {
                     gridRow: mobile ? 3 : 2,
                     gridColumn: large || medium ? '1/4' : 1
                   }}>
-                  <div style={{ margin: 20 }}>
+                  <div style={{ margin: 20, display: 'flex', flexDirection: 'column', gap: 5 }}>
                     <Typography
                       variant={large ? 'h2' : medium ? 'h2' : small ? 'h3' : 'h3'}
                       style={{ fontWeight: 'bold' }}>
                       Anja Stricker
                     </Typography>
-                    <Typography variant="h4">Full Stack Developer</Typography>
+                    <Typography variant="h4" style={{ marginBottom: 20 }}>
+                      Full Stack Developer
+                    </Typography>
                     <Typography>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                      kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                      I am a passionate developer and I am constantly learning on my own.
+                    </Typography>
+                    <Typography>
+                      I am primarily focused on web and app development with React and React Native.
+                      Thanks to my creativity, I also develop appealing UI designs.
                     </Typography>
                   </div>
                 </Paper>
@@ -86,22 +94,62 @@ function App() {
                     margin: 'auto',
                     background: '#fff',
                     height: '100%',
+                    width: '100%',
                     borderRadius: 5,
                     gridRow: mobile ? 4 : 3,
                     gridColumn: large || medium ? '1/4' : mobile ? 1 : '1/3'
                   }}>
                   <div style={{ margin: 20 }}>
-                    <Typography
-                      variant={large ? 'h2' : medium ? 'h2' : small ? 'h3' : 'h3'}
-                      style={{ fontWeight: 'bold' }}>
+                    <Typography variant="h3" style={{ fontWeight: 'bold' }}>
                       Skills
                     </Typography>
-                    <Typography>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                      kasd gubergren.
-                    </Typography>
+                    <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                      <img
+                        src={react}
+                        height="50"
+                        style={{
+                          border: '2px solid #f5c7a9',
+                          borderRadius: 10,
+                          padding: 10
+                        }}
+                      />
+                      <img
+                        src={csharp}
+                        height="50"
+                        style={{
+                          border: '2px solid #f5c7a9',
+                          borderRadius: 10,
+                          padding: 10
+                        }}
+                      />
+                      <img
+                        src={docker}
+                        height="50"
+                        style={{
+                          border: '2px solid #f5c7a9',
+                          borderRadius: 10,
+                          padding: 10
+                        }}
+                      />
+                      <img
+                        src={aspnet}
+                        height="50"
+                        style={{
+                          border: '2px solid #f5c7a9',
+                          borderRadius: 10,
+                          padding: 10
+                        }}
+                      />
+                      <img
+                        src={nodejs}
+                        height="50"
+                        style={{
+                          border: '2px solid #f5c7a9',
+                          borderRadius: 10,
+                          padding: 10
+                        }}
+                      />
+                    </div>
                   </div>
                 </Paper>
                 <img
@@ -246,7 +294,8 @@ function App() {
               display: 'flex',
               justifyContent: 'center',
               minHeight: '100vh',
-              marginTop: mobile ? 50 : 0
+              marginTop: mobile ? 50 : 0,
+              marginBottom: mobile ? 50 : 0
             }}>
             <Fade left>
               <div
