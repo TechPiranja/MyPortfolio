@@ -86,8 +86,6 @@ export default function Navigation(props: any) {
         </Drawer>
       </Box>
       <Box component="main" sx={{ width: '100%', margin: 'auto 0' }}>
-        <Toolbar />
-        <Toolbar />
         {props.children}
       </Box>
     </Box>
