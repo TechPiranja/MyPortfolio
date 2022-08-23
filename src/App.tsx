@@ -10,11 +10,17 @@ import anjaSideCrop from './assets/anja-side-crop.jpg';
 import Lottie from 'lottie-react';
 import scroll from './animations/scroll-arrow.json';
 import mail from './animations/mail.json';
-import react from './assets/react.png';
-import csharp from './assets/Csharp-logo.png';
-import docker from './assets/docker.png';
-import aspnet from './assets/aspnet.png';
-import nodejs from './assets/nodejs.png';
+
+import {
+  SiDotnet,
+  SiReact,
+  SiDocker,
+  SiCsharp,
+  SiNodedotjs,
+  SiTypescript,
+  SiJest
+} from 'react-icons/si';
+import ContactSidebar from './components/ContactSidebar';
 
 function App() {
   const theme = useTheme();
@@ -33,7 +39,7 @@ function App() {
           <div
             ref={aboutMeRef}
             style={{ display: 'flex', justifyContent: 'center', minHeight: '100vh' }}>
-            <Fade left>
+            <Fade top>
               <div
                 style={{
                   display: 'grid',
@@ -103,52 +109,15 @@ function App() {
                     <Typography variant="h3" style={{ fontWeight: 'bold' }}>
                       Skills
                     </Typography>
-                    <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                      <img
-                        src={react}
-                        height="50"
-                        style={{
-                          border: '2px solid #f5c7a9',
-                          borderRadius: 10,
-                          padding: 10
-                        }}
-                      />
-                      <img
-                        src={csharp}
-                        height="50"
-                        style={{
-                          border: '2px solid #f5c7a9',
-                          borderRadius: 10,
-                          padding: 10
-                        }}
-                      />
-                      <img
-                        src={docker}
-                        height="50"
-                        style={{
-                          border: '2px solid #f5c7a9',
-                          borderRadius: 10,
-                          padding: 10
-                        }}
-                      />
-                      <img
-                        src={aspnet}
-                        height="50"
-                        style={{
-                          border: '2px solid #f5c7a9',
-                          borderRadius: 10,
-                          padding: 10
-                        }}
-                      />
-                      <img
-                        src={nodejs}
-                        height="50"
-                        style={{
-                          border: '2px solid #f5c7a9',
-                          borderRadius: 10,
-                          padding: 10
-                        }}
-                      />
+
+                    <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 10 }}>
+                      <SiReact size="50" color="grey" />
+                      <SiNodedotjs size="50" color="grey" />
+                      <SiTypescript size="50" color="grey" />
+                      <SiJest size="50" color="grey" />
+                      <SiDocker size="50" color="grey" />
+                      <SiCsharp size="50" color="grey" />
+                      <SiDotnet size="50" color="grey" />
                     </div>
                   </div>
                 </Paper>
@@ -369,6 +338,7 @@ function App() {
           </div>
         </Box>
       </Navigation>
+      <ContactSidebar />
     </>
   );
 }

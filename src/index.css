@@ -105,3 +105,19 @@ code {
   opacity: 1;
   transform: scale(1, 1);
 }
+a {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 65px;
+  border-radius: 50%;
+  font-size: 30px;
+  border: solid 3px transparent;
+  transition: 0.5s;
+}
+
+a:hover {
+  border: solid 3px #fff;
+}
