@@ -1,18 +1,22 @@
 import { FiGithub, FiInstagram, FiTwitter, FiLinkedin } from 'react-icons/fi';
+import { useMediaQuery } from '@mui/material';
 import Fade from 'react-reveal/Fade';
 
 export default function ContactSidebar() {
+  const mobile = useMediaQuery('(max-width:1000px)');
   return (
     <div
       style={{
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: mobile ? 'row' : 'column',
         gap: 10,
-        position: 'fixed',
+        position: mobile ? 'relative' : 'fixed',
         left: 0,
-        top: '50%',
-        marginLeft: 20,
-        transform: 'translate(0%, -50%)'
+        bottom: mobile ? 0 : 'auto',
+        top: mobile ? 'auto' : '50%',
+        marginLeft: mobile ? 0 : 20,
+        justifyContent: 'center',
+        transform: mobile ? '' : 'translate(0%, -50%)'
       }}>
       <Fade top>
         <a href="https://github.com/TechPiranja">

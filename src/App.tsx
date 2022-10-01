@@ -1,4 +1,4 @@
-import { Box, Typography, Paper, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Typography, Paper, useMediaQuery, useTheme, IconButton } from '@mui/material';
 import Fade from 'react-reveal/Fade';
 import React, { useRef } from 'react';
 import './App.css';
@@ -7,6 +7,10 @@ import anja from './assets/anja.jpg';
 import anjaCrop from './assets/anja-crop.png';
 import anjaSide from './assets/anja-side.jpg';
 import anjaSideCrop from './assets/anja-side-crop.jpg';
+import lovelyTime from './assets/lovelytime.png';
+import rossie from './assets/rossie.png';
+import memory from './assets/memory.png';
+import learnTuring from './assets/learn-turing.png';
 import Lottie from 'lottie-react';
 import scroll from './animations/scroll-arrow.json';
 import mail from './animations/mail.json';
@@ -21,6 +25,8 @@ import {
   SiJest
 } from 'react-icons/si';
 import ContactSidebar from './components/ContactSidebar';
+import MyTimeline from './components/MyTimeline';
+import { OpenInNew } from '@mui/icons-material';
 
 function App() {
   const theme = useTheme();
@@ -31,10 +37,12 @@ function App() {
 
   const aboutMeRef = useRef(null);
   const projectsRef = useRef(null);
+  const uniProjectsRef = useRef(null);
+  const timelineRef = useRef(null);
   const contactRef = useRef(null);
   return (
     <>
-      <Navigation refs={[aboutMeRef, projectsRef, contactRef]}>
+      <Navigation refs={[aboutMeRef, projectsRef, uniProjectsRef, timelineRef, contactRef]}>
         <Box style={{ width: '100%' }}>
           <div
             ref={aboutMeRef}
@@ -164,7 +172,7 @@ function App() {
                 <Typography
                   variant={large ? 'h2' : medium ? 'h2' : small ? 'h3' : 'h3'}
                   style={{ fontWeight: 'bold', color: 'white', gridRow: 1, gridColumn: '1/2' }}>
-                  Projects
+                  Personal Projects
                 </Typography>
                 <Paper
                   elevation={0}
@@ -177,14 +185,13 @@ function App() {
                     gridColumn: 1
                   }}>
                   <div style={{ margin: 20 }}>
-                    <Typography variant="h2" style={{ fontWeight: 'bold' }}>
-                      Project 1
+                    <Typography variant="h3" style={{ fontWeight: 'bold' }}>
+                      Lovely Time
                     </Typography>
-                    <Typography>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                      kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    <img src={lovelyTime} width="100%" style={{ borderRadius: 10 }} />
+                    <Typography style={{ marginTop: 10 }}>
+                      This is an app build with react native. You can add relationships and track
+                      the time you have spend with your beloved ones.
                     </Typography>
                   </div>
                 </Paper>
@@ -199,17 +206,49 @@ function App() {
                     gridColumn: mobile ? 1 : 2
                   }}>
                   <div style={{ margin: 20 }}>
-                    <Typography variant="h2" style={{ fontWeight: 'bold' }}>
-                      Project 2
+                    <Typography variant="h3" style={{ fontWeight: 'bold' }}>
+                      RoSSie
                     </Typography>
-                    <Typography>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                      kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    <img src={rossie} width="100%" style={{ borderRadius: 10 }} />
+                    <Typography style={{ marginTop: 10 }}>
+                      This app is also build with react native. You can read any rss feeds with it,
+                      save multiple feeds and also use darkmode!
                     </Typography>
                   </div>
                 </Paper>
+              </div>
+            </Fade>
+          </div>
+
+          <div
+            ref={uniProjectsRef}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              minHeight: '100vh',
+              marginTop: mobile ? 50 : 0
+            }}>
+            <Fade left>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: mobile ? 'repeat(1, 1fr)' : 'repeat(2, 1fr)',
+                  gridAutoFlow: 'row',
+                  gridGap: 20,
+                  margin: 'auto',
+                  maxWidth: large ? 1000 : medium ? 860 : small && !mobile ? 700 : 350
+                }}>
+                <Typography
+                  variant={large ? 'h2' : medium ? 'h2' : small ? 'h3' : 'h3'}
+                  style={{
+                    fontWeight: 'bold',
+                    color: 'white',
+                    gridRow: '1/2',
+                    gridColumn: '1/3'
+                  }}>
+                  Projects build at university
+                </Typography>
+
                 <Paper
                   elevation={0}
                   style={{
@@ -217,18 +256,27 @@ function App() {
                     background: '#fff',
                     height: '100%',
                     borderRadius: 5,
-                    gridRow: mobile ? 4 : 3,
+                    gridRow: 2,
                     gridColumn: 1
                   }}>
                   <div style={{ margin: 20 }}>
-                    <Typography variant="h2" style={{ fontWeight: 'bold' }}>
-                      Project 3
-                    </Typography>
-                    <Typography>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                      kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <Typography variant="h3" style={{ fontWeight: 'bold' }}>
+                        Memory Game
+                      </Typography>
+                      <IconButton
+                        onClick={() => window.open('https://memory.anja-stricker.de/', '_blank')}
+                        size="large"
+                        color="primary"
+                        component="label">
+                        <OpenInNew />
+                      </IconButton>
+                    </div>
+
+                    <img src={memory} width="100%" style={{ borderRadius: 10 }} />
+                    <Typography style={{ marginTop: 10 }}>
+                      This website was build with vanilla js html and css in 48 hours for a school
+                      project!
                     </Typography>
                   </div>
                 </Paper>
@@ -239,21 +287,60 @@ function App() {
                     background: '#fff',
                     height: '100%',
                     borderRadius: 5,
-                    gridRow: mobile ? 5 : 3,
+                    gridRow: mobile ? 3 : 2,
                     gridColumn: mobile ? 1 : 2
                   }}>
                   <div style={{ margin: 20 }}>
-                    <Typography variant="h2" style={{ fontWeight: 'bold' }}>
-                      Project 4
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <Typography variant="h3" style={{ fontWeight: 'bold' }}>
+                        Learn Turing
+                      </Typography>
+                      <IconButton
+                        onClick={() =>
+                          window.open('https://learn-turing.anja-stricker.de/', '_blank')
+                        }
+                        size="large"
+                        color="primary"
+                        component="label">
+                        <OpenInNew />
+                      </IconButton>
+                    </div>
+
+                    <img src={learnTuring} width="100%" style={{ borderRadius: 10 }} />
+                    <Typography style={{ marginTop: 10 }}>
+                      This website was build with React and Express.js.
                     </Typography>
-                    <Typography>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                      kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    <Typography style={{ marginTop: 10 }}>
+                      You can learn how to build Turing machines with that and can also build and
+                      test them!
                     </Typography>
                   </div>
                 </Paper>
+              </div>
+            </Fade>
+          </div>
+
+          <div
+            ref={timelineRef}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              minHeight: '100vh',
+              marginTop: mobile ? 50 : 0,
+              marginBottom: mobile ? 50 : 0
+            }}>
+            <Fade left>
+              <div
+                style={{
+                  margin: 'auto',
+                  width: large ? 1000 : medium ? 860 : small && !mobile ? 700 : 350
+                }}>
+                <Typography
+                  variant={large ? 'h2' : medium ? 'h2' : small ? 'h3' : 'h3'}
+                  style={{ fontWeight: 'bold', color: 'white', gridRow: 1, gridColumn: 1 }}>
+                  My Timeline
+                </Typography>
+                <MyTimeline />
               </div>
             </Fade>
           </div>
@@ -263,8 +350,7 @@ function App() {
               display: 'flex',
               justifyContent: 'center',
               minHeight: '100vh',
-              marginTop: mobile ? 50 : 0,
-              marginBottom: mobile ? 50 : 0
+              marginTop: mobile ? 50 : 0
             }}>
             <Fade left>
               <div
