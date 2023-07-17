@@ -1,4 +1,4 @@
-import { FiGithub, FiInstagram, FiTwitter, FiLinkedin } from 'react-icons/fi';
+import { FiGithub, FiInstagram, FiLinkedin } from 'react-icons/fi';
 import { useMediaQuery } from '@mui/material';
 import Fade from 'react-reveal/Fade';
 
@@ -25,9 +25,9 @@ export default function ContactSidebar() {
         <a href="https://www.instagram.com/techpiranja">
           <FiInstagram size="30" color="white" />
         </a>
-        <a href="https://mobile.twitter.com/techpiranja">
+        {/* <a href="https://mobile.twitter.com/techpiranja">
           <FiTwitter size="30" color="white" />
-        </a>
+        </a> */}
         <a href="https://www.linkedin.com/in/anja-stricker">
           <FiLinkedin size="30" color="white" />
         </a>
