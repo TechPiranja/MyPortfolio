@@ -8,6 +8,25 @@ export default function MyTimeline() {
   return (
     <div>
       <VerticalTimeline>
+      <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          date="2023 - present"
+          iconStyle={{ background: '#754A2E', color: '#fff' }}
+          icon={<MdWorkOutline />}>
+          <h3 className="vertical-timeline-element-title">Software Engineer</h3>
+          <h4 className="vertical-timeline-element-subtitle">QuickBird Studios</h4>
+          <p>
+            Developing several software projects for customers. 
+            Writing Backends using TypeScript and Node.js. 
+            Also writing Web-Frontends in React.js. Also responsible for CI/CD pipelines.
+          </p>
+          <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginTop: 20 }}>
+            <Chip label="React" size="small" />
+            <Chip label="MySQL" size="small" />
+            <Chip label="Typescript" size="small" />
+            <Chip label="Node.js" size="small" />
+          </div>
+        </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
           date="2021 - present"
@@ -30,8 +49,7 @@ export default function MyTimeline() {
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
-          contentArrowStyle={{ borderRight: '7px solid  #754A2E' }}
-          date="2019 - present"
+          date="2019 - 2023"
           iconStyle={{ background: '#754A2E', color: '#fff' }}
           icon={<MdOutlineSchool />}>
           <h3 className="vertical-timeline-element-title">Mediainformatics Student</h3>

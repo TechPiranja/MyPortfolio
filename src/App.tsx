@@ -90,13 +90,13 @@ function App() {
                       style={{ fontWeight: 'bold' }}>
                       Anja Stricker
                     </Typography>
-                    <Typography variant="h4" style={{ marginBottom: 20 }}>
-                      Full Stack Developer
+                    <Typography variant="h5" style={{ marginBottom: 20 }}>
+                      ~ Full Stack Developer
                     </Typography>
-                    <Typography>
+                    <Typography fontSize={large ? 20 : 16}>
                       I am a passionate developer and I am constantly learning on my own.
                     </Typography>
-                    <Typography>
+                    <Typography fontSize={large ? 20 : 16}>
                       I am primarily focused on web and app development with React and React Native.
                       Thanks to my creativity, I also develop appealing UI designs.
                     </Typography>
@@ -113,12 +113,12 @@ function App() {
                     gridRow: mobile ? 4 : 3,
                     gridColumn: large || medium ? '1/4' : mobile ? 1 : '1/3'
                   }}>
-                  <div style={{ margin: 20 }}>
+                  <div style={{ margin: 20, height: 'auto' }}>
                     <Typography variant="h3" style={{ fontWeight: 'bold' }}>
                       Skills
                     </Typography>
 
-                    <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 10 }}>
+                    <div style={{ display: 'flex', gap: large ? 33 : 15, flexWrap: 'wrap', marginTop: large ? 30 : 10 }}>
                       <SiReact size="50" color="grey" />
                       <SiNodedotjs size="50" color="grey" />
                       <SiTypescript size="50" color="grey" />
